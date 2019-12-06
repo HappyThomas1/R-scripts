@@ -14,18 +14,10 @@ library(viridis)
 library(MASS)
 library("mgcv")
 
-tryCatch(
-
-setwd("C://Users/Shintaro Watanuki/Dropbox/–ÈŠÑŒNƒf[ƒ^/190913 Go-Ateam_5w_Fresh"),
-	error=function(e){
-		message(e)
-		q()
-	}
-)
 
 PrimaryDirectory = getwd()
 
-#ƒtƒ@ƒCƒ‹’†‚Ì+•¶š‚ğ‚·‚×‚Ä_‚É•ÏX
+#ãƒ•ã‚¡ã‚¤ãƒ«ä¸­ã®+æ–‡å­—ã‚’ã™ã¹ã¦_ã«å¤‰æ›´
 files <- list.files(pattern="\\.fcs")
 
 i<-1
@@ -47,11 +39,11 @@ file.rename(files,newfiles)
 
 
 
-#fraction‚Ì–¼‘O
+#fractionã®åå‰
 #fraction_list <-  c("P12","P13","Q4")
 
 
-# condition‚Ì’Šo
+# conditionã®æŠ½å‡º
 newfiles <- gsub("Specimen_001_","",newfiles)
 newfiles <- gsub(".fcs","",newfiles)
 condition_list <- levels(factor(newfiles))
@@ -110,7 +102,7 @@ for(condition_num in 1:l){
 
 
 number_of_Samples <- length(FileNames)
-#–ò‚ğ‰Á‚¦‚½Û‚ÌŠÔƒVƒtƒgi‘O‚ÌÅŒã‚ÌŒŸoŠÔ+5000j
+#è©¦è–¬ã‚’åŠ ãˆãŸéš›ã®æ™‚é–“ã‚·ãƒ•ãƒˆï¼ˆå‰ã®æœ€å¾Œã®æ¤œå‡ºæ™‚é–“+5000ï¼‰
 time_shift <- rep(0,number_of_Samples)
 i=1
    for(sample in FileNames){
@@ -118,7 +110,7 @@ i=1
     data_tmp <- exprs(read.FCS(sample, transformation = FALSE))
 
 
-#ƒfƒoƒbƒO—p@¶ƒf[ƒ^CSVo—Í
+#ãƒ‡ãƒãƒƒã‚°ç”¨ã€€ç”Ÿãƒ‡ãƒ¼ã‚¿CSVå‡ºåŠ›
 #   write.csv(data_tmp,paste(condition,fraction,".csv",collapse=""))
 
 
@@ -140,7 +132,7 @@ i=1
 
 
     data_tmp_FRET <- cbind(data_tmp_TIME,data_tmp_FRET)
-    #ATP conc high cell‚Í‚Ì‚¼‚­
+    #ATP conc high cellã¯ã®ãã
 
 ########################
 ####ATP conc conversion to avoid infinite, FRET >1.4 and FRET <7 is required
